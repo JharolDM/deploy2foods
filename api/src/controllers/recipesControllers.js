@@ -1,7 +1,7 @@
 const { Op } = require('sequelize');
-require('dotenv').config();
 const { Recipe, Diet } = require('../db.js');
 const axios = require ('axios');
+require('dotenv').config();
 const { KEY, URL } = process.env;
 
 // Controller function para crear una nueva receta

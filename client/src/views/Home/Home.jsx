@@ -12,26 +12,21 @@ const Home = () => {
 
   useEffect(() => {
     if (!loaded) {
-      // Si las recetas aún no se han cargado, se llama a la acción "getRecipes" para obtener las recetas del servidor
       dispatch(getRecipes())
         .then(() => {
           setLoading(false);
           setLoaded(true); // Se establece loaded en true para indicar que las recetas ya se han cargado
         })
         .catch((error) => {
-          console.log("Error fetching recipes:", error.response.data);
+          console.log("Error fetching recipes:", error.response?.data);
           setLoading(false);
-          alert(error.response.data.message);
+          alert(error.response?.data?.message || "Error fetching recipes");
         });
     }
   }, [dispatch, loaded]);
 
   return (
-    // Si el estado de carga es verdadero o no hay recetas disponibles, se muestra el componente "Loader" (indicador de carga)
-    // De lo contrario, se muestra el componente "CardsContainer" que contiene las tarjetas de receta
-    <>
-      {loading || recipes.length === 0 ? <Loader /> : <CardsContainer />}
-    </>
+    <>{loading || recipes.length === 0 ? <Loader /> : <CardsContainer />}</>
   );
 };
 
