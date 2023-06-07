@@ -3,6 +3,10 @@ import './App.css';
 import {About, Detail, Form, Home, Landing} from './views';
 import {Route} from 'react-router-dom'
 import ThreeDotsMenu from './components/ThreeDotsMenu/ThreeDotsMenu';
+import axios from "axios";
+
+axios.defaults.baseURL = "https://deploy2foods-production.up.railway.app/";
+
 
 function App() {
   const location = useLocation();
